@@ -7,6 +7,7 @@ namespace GymService.Core.Entities
     public class Roles
     {
         public static string User => "user";
+        public static string Admin => "admin";
         public static string Trainer => "trainer";
         public static string Guest => "guest";
         public static string Receptionist => "receptionist";

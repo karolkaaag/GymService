@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using GymService.Core.Repositories;
+using GymService.Infrastructure.Mappers;
+using GymService.Infrastructure.Repositories;
+using GymService.Infrastructure.Services;
+using GymService.Infrastructure.Services.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +36,10 @@ namespace GymService.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.AddScoped<IUserRepository, UserMemoryRepository>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddSingleton(AutoMapperConfig.Initialize());
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymService.Web", "GymService.Web\GymService.Web.csproj", "{548D9C9A-A471-4347-90EF-82347DA46022}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymService.Infrastructure", "GymService.Infrastructure\GymService.Infrastructure.csproj", "{FDAA6CB7-7EBA-4E4A-9ED8-AF1B8D657FCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymService.Core", "GymService.Core\GymService.Core.csproj", "{A7C84438-B48C-4D7D-920C-AEC510734A82}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{548D9C9A-A471-4347-90EF-82347DA46022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{548D9C9A-A471-4347-90EF-82347DA46022}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{548D9C9A-A471-4347-90EF-82347DA46022}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{548D9C9A-A471-4347-90EF-82347DA46022}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDAA6CB7-7EBA-4E4A-9ED8-AF1B8D657FCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDAA6CB7-7EBA-4E4A-9ED8-AF1B8D657FCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDAA6CB7-7EBA-4E4A-9ED8-AF1B8D657FCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDAA6CB7-7EBA-4E4A-9ED8-AF1B8D657FCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7C84438-B48C-4D7D-920C-AEC510734A82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7C84438-B48C-4D7D-920C-AEC510734A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7C84438-B48C-4D7D-920C-AEC510734A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7C84438-B48C-4D7D-920C-AEC510734A82}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

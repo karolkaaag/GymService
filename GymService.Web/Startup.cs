@@ -8,6 +8,7 @@ using GymService.Infrastructure.Mappers;
 using GymService.Infrastructure.Repositories;
 using GymService.Infrastructure.Services;
 using GymService.Infrastructure.Services.Repositories;
+using GymService.Infrastructure.Services.Repositories.Passenger.Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -37,8 +38,9 @@ namespace GymService.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddScoped<IUserRepository, UserMemoryRepository>();
+            services.AddScoped<IUserRepository, InMemoryUserRepository>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IEncrypter, Encrypter>();
             services.AddSingleton(AutoMapperConfig.Initialize());
 
 

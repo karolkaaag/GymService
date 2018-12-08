@@ -17,9 +17,4 @@
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\GymService.Core\GymService.Core.csproj" />
-    <ProjectReference Include="..\GymService.Infrastructure\GymService.Infrastructure.csproj" />
-  </ItemGroup>
-
 </Project>

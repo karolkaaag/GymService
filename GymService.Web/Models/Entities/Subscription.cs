@@ -12,5 +12,7 @@ namespace GymService.Web.Models.Entities
         public SubscriptionType Type { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+
+        public AppUser Owner { get; set; }
     }
 }

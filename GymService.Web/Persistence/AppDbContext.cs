@@ -13,6 +13,9 @@ namespace GymService.Web.Persistence
 {
     public class AppDbContext : IdentityDbContext<AppUser>
     {
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
+
         public AppDbContext(DbContextOptions options) : base(options)
         {
 

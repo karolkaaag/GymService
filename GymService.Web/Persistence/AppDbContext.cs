@@ -13,8 +13,18 @@ namespace GymService.Web.Persistence
 {
     public class AppDbContext : IdentityDbContext<AppUser>
     {
+        // New AppDbContext
+        //private AppDbContext context;
+        //public Class(AppDbContext context)
+        //{
+        //    this.context = context;
+
+        //}
+
         public DbSet<Product> Products { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Sale> Sales { get; set; }
 
         public AppDbContext(DbContextOptions options) : base(options)
         {
@@ -58,5 +68,6 @@ namespace GymService.Web.Persistence
                 }
             }
         }
+
     }
 }

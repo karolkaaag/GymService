@@ -4,14 +4,16 @@ using GymService.Web.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GymService.Web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190119143903_SeleAndOrderAdd")]
+    partial class SeleAndOrderAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,11 +117,11 @@ namespace GymService.Web.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid>("OrderId");
+                    b.Property<Guid?>("OrderId");
 
                     b.Property<double>("Price");
 
-                    b.Property<Guid>("ProductId");
+                    b.Property<Guid?>("ProductId");
 
                     b.Property<int>("Quantity");
 
@@ -277,13 +279,11 @@ namespace GymService.Web.Migrations
                 {
                     b.HasOne("GymService.Web.Models.Entities.Order", "Order")
                         .WithMany("Sales")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("OrderId");
 
                     b.HasOne("GymService.Web.Models.Entities.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("GymService.Web.Models.Entities.Subscription", b =>

@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Session;
+
 
 namespace GymService.Web
 {
@@ -31,12 +33,23 @@ namespace GymService.Web
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false; // Default is true, make it false
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddMvc();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
+            //    (options => {
+            //    options.Cookie.HttpOnly = true;
+            //    options.Cookie.Name = ".AspNetCore.Session";
+            //    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+            //    options.IdleTimeout = TimeSpan.FromMinutes(30);
+            //});
 
             services.AddDbContext<AppDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("GymServiceDb")));
+
 
             services.AddIdentity<AppUser, IdentityRole>()
                        .AddEntityFrameworkStores<AppDbContext>()
@@ -46,10 +59,6 @@ namespace GymService.Web
             {
                 options.LoginPath = "/Account/Login";
             });
-
-
-            services.AddMvc();
-
 
 
         }
@@ -70,6 +79,7 @@ namespace GymService.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
             app.UseAuthentication();
 
             app.UseMvc(routes =>

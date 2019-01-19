@@ -4,14 +4,16 @@ using GymService.Web.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GymService.Web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190113210932_ProductUpdate")]
+    partial class ProductUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,30 +72,6 @@ namespace GymService.Web.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("GymService.Web.Models.Entities.Order", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CustomerId");
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<bool>("Paid");
-
-                    b.Property<bool>("Received");
-
-                    b.Property<string>("SellerId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("SellerId");
-
-                    b.ToTable("Orders");
-                });
-
             modelBuilder.Entity("GymService.Web.Models.Entities.Product", b =>
                 {
                     b.Property<Guid>("Id")
@@ -108,28 +86,6 @@ namespace GymService.Web.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("GymService.Web.Models.Entities.Sale", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid>("OrderId");
-
-                    b.Property<double>("Price");
-
-                    b.Property<Guid>("ProductId");
-
-                    b.Property<int>("Quantity");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Sales");
                 });
 
             modelBuilder.Entity("GymService.Web.Models.Entities.Subscription", b =>
@@ -260,30 +216,6 @@ namespace GymService.Web.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("GymService.Web.Models.Entities.Order", b =>
-                {
-                    b.HasOne("GymService.Web.Models.Entities.AppUser", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
-
-                    b.HasOne("GymService.Web.Models.Entities.AppUser", "Seller")
-                        .WithMany()
-                        .HasForeignKey("SellerId");
-                });
-
-            modelBuilder.Entity("GymService.Web.Models.Entities.Sale", b =>
-                {
-                    b.HasOne("GymService.Web.Models.Entities.Order", "Order")
-                        .WithMany("Sales")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("GymService.Web.Models.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("GymService.Web.Models.Entities.Subscription", b =>
